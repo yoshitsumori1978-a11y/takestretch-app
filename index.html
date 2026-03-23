@@ -371,6 +371,55 @@ footer strong{color:#fff}
 .cam-shutter:active::after{background:#d8f3dc}
 .cam-switch{background:rgba(255,255,255,.15);border:none;color:#fff;width:48px;height:48px;border-radius:50%;font-size:1.2rem;cursor:pointer}
 .cam-timer-badge{position:absolute;top:12px;left:50%;transform:translateX(-50%);background:rgba(231,76,60,.85);color:#fff;padding:4px 16px;border-radius:20px;font-size:1.2rem;font-weight:900;display:none;z-index:5}
+.cam-mode-select{flex:1;display:flex;flex-direction:column;gap:16px;padding:24px 20px;justify-content:center;align-items:center}
+.cam-mode-card{background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.2);border-radius:18px;padding:24px 20px;width:100%;max-width:320px;text-align:center;cursor:pointer;transition:all .2s}
+.cam-mode-card:active{transform:scale(.97);background:rgba(255,255,255,.18);border-color:#52b788}
+.cam-mode-icon{font-size:2.5rem;margin-bottom:8px}
+.cam-mode-name{font-size:1rem;font-weight:800;color:#fff;margin-bottom:4px}
+.cam-mode-desc{font-size:.75rem;color:rgba(255,255,255,.6);line-height:1.4}
+.cam-self-msg{position:absolute;bottom:60px;left:0;right:0;text-align:center;font-size:.82rem;font-weight:700;color:#fff;background:rgba(46,125,50,.8);padding:8px;animation:camPulse 1s infinite}
+@keyframes camPulse{0%,100%{opacity:1}50%{opacity:.6}}
+
+/* ===== AI POSTURE ANALYSIS ===== */
+.pa-modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:750;overflow-y:auto}
+.pa-modal-bg.show{display:block}
+.pa-modal{max-width:500px;margin:10px auto;padding:0 0 30px;color:#fff}
+.pa-header{padding:14px 16px;display:flex;justify-content:space-between;align-items:center}
+.pa-header h3{font-size:.95rem;font-weight:800;display:flex;align-items:center;gap:8px}
+.pa-close{background:rgba(255,255,255,.15);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:1.2rem;cursor:pointer}
+.pa-scan{position:relative;margin:0 16px 16px;border-radius:16px;overflow:hidden;background:#000}
+.pa-scan img{width:100%;display:block;border-radius:16px}
+.pa-scan canvas{position:absolute;inset:0;width:100%;height:100%}
+.pa-scan-line{position:absolute;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#52b788,#95d5b2,#52b788,transparent);box-shadow:0 0 15px #52b788;animation:paScanAnim 2s ease-in-out infinite;z-index:2}
+@keyframes paScanAnim{0%{top:0}50%{top:100%}100%{top:0}}
+.pa-instructions{margin:0 16px 12px;padding:12px;background:rgba(82,183,136,.15);border:1px solid rgba(82,183,136,.3);border-radius:12px;font-size:.78rem;line-height:1.6;color:rgba(255,255,255,.85)}
+.pa-instructions b{color:#95d5b2}
+.pa-landmark-list{margin:0 16px 12px;display:flex;flex-wrap:wrap;gap:6px}
+.pa-lm-tag{padding:4px 10px;border-radius:8px;font-size:.7rem;font-weight:700;border:1.5px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5)}
+.pa-lm-tag.done{border-color:#52b788;color:#52b788;background:rgba(82,183,136,.15)}
+.pa-lm-tag.current{border-color:#f1c40f;color:#f1c40f;background:rgba(241,196,15,.15);animation:paBlink 1s infinite}
+@keyframes paBlink{0%,100%{opacity:1}50%{opacity:.5}}
+.pa-actions{margin:0 16px 12px;display:flex;gap:8px}
+.pa-btn{flex:1;padding:12px;border:none;border-radius:12px;font-size:.82rem;font-weight:700;cursor:pointer}
+.pa-btn-reset{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.2)}
+.pa-btn-analyze{background:linear-gradient(90deg,#2d6a4f,#40916c);color:#fff}
+.pa-btn:disabled{opacity:.4;cursor:default}
+.pa-result{margin:0 16px;background:linear-gradient(160deg,#1b4332,#0a1a14);border-radius:16px;padding:16px;border:1px solid rgba(82,183,136,.3)}
+.pa-result h4{font-size:.9rem;font-weight:800;color:#95d5b2;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.pa-score-ring{width:100px;height:100px;margin:0 auto 12px;position:relative}
+.pa-score-ring svg{width:100%;height:100%}
+.pa-score-num{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:1.8rem;font-weight:900;color:#fff}
+.pa-score-label{text-align:center;font-size:.75rem;color:rgba(255,255,255,.6);margin-bottom:16px}
+.pa-metrics{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.pa-metric{background:rgba(255,255,255,.07);border-radius:10px;padding:10px;text-align:center}
+.pa-metric-name{font-size:.65rem;color:rgba(255,255,255,.5);margin-bottom:4px}
+.pa-metric-val{font-size:1rem;font-weight:800;color:#95d5b2}
+.pa-metric-val.warn{color:#f39c12}
+.pa-metric-val.bad{color:#e74c3c}
+.pa-advice{background:rgba(82,183,136,.1);border-radius:10px;padding:12px;font-size:.75rem;line-height:1.7;color:rgba(255,255,255,.8)}
+.pa-advice b{color:#95d5b2}
+.pa-compare{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.1)}
+.pa-compare h5{font-size:.8rem;font-weight:800;color:#f1c40f;margin-bottom:8px}
 
 .rec-cam-btn{display:inline-flex;align-items:center;gap:5px;padding:8px 14px;border-radius:10px;border:none;background:linear-gradient(135deg,#2d6a4f,#40916c);color:#fff;font-size:.75rem;font-weight:700;cursor:pointer;margin-top:6px;transition:all .15s}
 .rec-cam-btn:active{transform:scale(.96);opacity:.85}
@@ -534,74 +583,12 @@ footer strong{color:#fff}
 .act-week-fill{width:100%;background:linear-gradient(180deg,#40916c,#95d5b2);border-radius:4px 4px 0 0;min-height:2px;transition:height .3s}
 .act-week-label{font-size:.58rem;color:#999;font-weight:700}
 .act-week-count{font-size:.6rem;color:#2d6a4f;font-weight:800}
-/* ===== PASSWORD SCREEN ===== */
-.pw-screen{position:fixed;inset:0;z-index:9999;background:linear-gradient(160deg,#1b4332,#2d6a4f,#40916c);display:flex;align-items:center;justify-content:center;padding:20px}
-.pw-box{background:rgba(255,255,255,.97);border-radius:24px;padding:36px 28px;width:100%;max-width:360px;text-align:center;box-shadow:0 12px 48px rgba(0,0,0,.3)}
-.pw-logo{font-size:3rem;margin-bottom:8px}
-.pw-title{font-size:1.1rem;font-weight:800;color:#1b4332;margin-bottom:4px}
-.pw-sub{font-size:.75rem;color:#52796f;margin-bottom:24px;line-height:1.5}
-.pw-input{width:100%;padding:14px 16px;border:2px solid #d8f3dc;border-radius:12px;font-size:1rem;text-align:center;letter-spacing:.15em;outline:none;transition:border-color .2s}
-.pw-input:focus{border-color:#40916c}
-.pw-input.error{border-color:#e74c3c;animation:pwShake .4s}
-@keyframes pwShake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
-.pw-btn{width:100%;padding:14px;background:linear-gradient(90deg,#40916c,#52b788);border:none;border-radius:12px;color:#fff;font-size:.95rem;font-weight:700;cursor:pointer;margin-top:14px;letter-spacing:.03em}
-.pw-btn:active{opacity:.85}
-.pw-err{color:#e74c3c;font-size:.75rem;margin-top:10px;min-height:1.2em}
-.pw-footer{font-size:.62rem;color:#95a5a6;margin-top:18px}
+/* パスワードCSS 削除済み */
 </style>
 </head>
 <body>
 
-<!-- ==================== PASSWORD SCREEN ==================== -->
-<div class="pw-screen" id="pwScreen">
-  <div class="pw-box">
-    <div class="pw-logo">🎋</div>
-    <div class="pw-title">タケストレッチ® 動画ライブラリ</div>
-    <div class="pw-sub">このコンテンツはパスワードで保護されています<br>パスワードを入力してください</div>
-    <input type="password" class="pw-input" id="pwInput" placeholder="パスワード" autocomplete="off">
-    <button class="pw-btn" id="pwBtn" onclick="checkPassword()">🔓 ログイン</button>
-    <div class="pw-err" id="pwErr"></div>
-    <div class="pw-footer">© TakeStretch® 関係者専用</div>
-  </div>
-</div>
-<script>
-(function(){
-  // SHA-256 hash of the password (change TAKE_PW_HASH to update password)
-  // Default password: "2026" → hash below
-  var TAKE_PW_HASH = '158a323a7ba44870f23d96f1516dd70aa48e9a72db4ebb026b0a89e212a208ab';
-
-  async function sha256(str){
-    var buf = new TextEncoder().encode(str);
-    var hash = await crypto.subtle.digest('SHA-256', buf);
-    return Array.from(new Uint8Array(hash)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
-  }
-
-  // Check if already authenticated this session
-  if(sessionStorage.getItem('takeAuth')==='ok'){
-    document.getElementById('pwScreen').style.display='none';
-  }
-
-  window.checkPassword = async function(){
-    var input = document.getElementById('pwInput');
-    var hash = await sha256(input.value);
-    if(hash === TAKE_PW_HASH){
-      sessionStorage.setItem('takeAuth','ok');
-      document.getElementById('pwScreen').style.display='none';
-    } else {
-      input.classList.add('error');
-      document.getElementById('pwErr').textContent = 'パスワードが違います';
-      setTimeout(function(){ input.classList.remove('error'); }, 500);
-      input.value='';
-      input.focus();
-    }
-  };
-
-  // Enter key support
-  document.getElementById('pwInput').addEventListener('keydown', function(e){
-    if(e.key==='Enter') checkPassword();
-  });
-})();
-</script>
+<!-- パスワード保護 削除済み -->
 
 <header>
   <div class="hdr-row">
@@ -849,19 +836,58 @@ footer strong{color:#fff}
     <h3 id="camTitle">📷 BEFORE 撮影</h3>
     <button class="cam-close" onclick="closeCamCapture()">&times;</button>
   </div>
-  <div class="cam-video-wrap">
+  <!-- Mode Selection -->
+  <div class="cam-mode-select" id="camModeSelect">
+    <div class="cam-mode-card" onclick="camSelectMode('other')">
+      <div class="cam-mode-icon">👫</div>
+      <div class="cam-mode-name">人に撮ってもらう</div>
+      <div class="cam-mode-desc">シャッターを押すとすぐ撮影</div>
+    </div>
+    <div class="cam-mode-card" onclick="camSelectMode('self')">
+      <div class="cam-mode-icon">🤳</div>
+      <div class="cam-mode-name">セルフ撮影</div>
+      <div class="cam-mode-desc">タケラックに置いて3秒後に自動撮影</div>
+    </div>
+  </div>
+  <!-- Camera View (hidden until mode selected) -->
+  <div class="cam-video-wrap" id="camVideoWrap" style="display:none">
     <video id="camVideo" autoplay playsinline muted></video>
     <div class="cam-guide">
-      <div class="cam-guide-text">全身が枠内に入るように立ってください</div>
+      <div class="cam-guide-text" id="camGuideText">全身が枠内に入るように立ってください</div>
     </div>
     <div class="cam-timer-badge" id="camTimer"></div>
   </div>
-  <div class="cam-controls">
+  <div class="cam-controls" id="camControls" style="display:none">
     <button class="cam-switch" onclick="camSwitchFacing()" title="カメラ切替">🔄</button>
-    <div class="cam-shutter" onclick="camTakeWithTimer()"></div>
-    <button class="cam-switch" onclick="camSetTimer()" id="camTimerBtn" title="タイマー">⏱️</button>
+    <div class="cam-shutter" id="camShutterBtn" onclick="camTakeWithTimer()"></div>
+    <button class="cam-switch" onclick="camBackToMode()" title="モード変更">↩️</button>
   </div>
   <canvas id="camCanvas" style="display:none"></canvas>
+</div>
+
+<!-- AI Posture Analysis Modal -->
+<div class="pa-modal-bg" id="paModalBg">
+  <div class="pa-modal">
+    <div class="pa-header">
+      <h3>🤖 AI姿勢解析</h3>
+      <button class="pa-close" onclick="paClose()">&times;</button>
+    </div>
+    <div class="pa-scan" id="paScan">
+      <img id="paImg" src="">
+      <canvas id="paCanvas"></canvas>
+      <div class="pa-scan-line" id="paScanLine" style="display:none"></div>
+    </div>
+    <div class="pa-instructions" id="paInstructions">
+      <b>写真の上をタップ</b>して、体のポイントを順番にマークしてください。<br>
+      正面または横向きの全身写真が最適です。
+    </div>
+    <div class="pa-landmark-list" id="paLandmarks"></div>
+    <div class="pa-actions">
+      <button class="pa-btn pa-btn-reset" onclick="paReset()">↩️ やり直し</button>
+      <button class="pa-btn pa-btn-analyze" id="paAnalyzeBtn" onclick="paAnalyze()" disabled>🤖 解析する</button>
+    </div>
+    <div id="paResultArea"></div>
+  </div>
 </div>
 
 <!-- ROM Analysis Modal -->
@@ -1444,6 +1470,8 @@ function getCatLabel(n){
 }
 
 function switchTab(tab){
+  // Free camera resources when leaving
+  closeCamCapture();
   ['chatbot','record','goals','programs','feedback','videos','stats','activity'].forEach(t=>{
     document.getElementById('tab-'+t).style.display = t===tab ? 'block' : 'none';
   });
@@ -1827,11 +1855,24 @@ function previewPhoto(type, input){
   if(!input.files||!input.files[0]) return;
   const reader = new FileReader();
   reader.onload = function(e){
-    const img = document.getElementById(type+'Preview');
-    img.src = e.target.result;
-    img.style.display = 'block';
-    if(type==='before') beforeDataUrl = e.target.result;
-    else afterDataUrl = e.target.result;
+    // Resize to save localStorage space
+    const tempImg = new Image();
+    tempImg.onload = function(){
+      const maxW = 640;
+      const scale = tempImg.width > maxW ? maxW / tempImg.width : 1;
+      const c = document.createElement('canvas');
+      c.width = Math.round(tempImg.width * scale);
+      c.height = Math.round(tempImg.height * scale);
+      const cx = c.getContext('2d');
+      cx.drawImage(tempImg, 0, 0, c.width, c.height);
+      const compressed = c.toDataURL('image/jpeg', 0.6);
+      const img = document.getElementById(type+'Preview');
+      img.src = compressed;
+      img.style.display = 'block';
+      if(type==='before') beforeDataUrl = compressed;
+      else afterDataUrl = compressed;
+    };
+    tempImg.src = e.target.result;
   };
   reader.readAsDataURL(input.files[0]);
 }
@@ -1864,8 +1905,21 @@ function saveRecord(){
 
 function loadRecords(){try{return JSON.parse(localStorage.getItem('takeRecords')||'[]');}catch(e){return [];}}
 function saveRecords(r){
-  try{localStorage.setItem('takeRecords',JSON.stringify(r.slice(0,20)));}
-  catch(e){alert('保存できませんでした。写真サイズが大きすぎる可能性があります。');}
+  var data = r.slice(0,20);
+  try{
+    localStorage.setItem('takeRecords',JSON.stringify(data));
+  } catch(e){
+    // Quota exceeded: try removing oldest records with photos
+    while(data.length > 5){
+      data.pop();
+      try{
+        localStorage.setItem('takeRecords',JSON.stringify(data));
+        alert('容量不足のため古い記録を一部削除して保存しました。');
+        return;
+      }catch(e2){}
+    }
+    alert('保存できませんでした。「統計」タブの容量管理から古いデータを削除してください。');
+  }
 }
 
 function deleteRecord(id){
@@ -1915,6 +1969,7 @@ function renderHistory(){
       </div>
       ${(r.beforeImg&&r.afterImg)?'<div class="rec-slider-wrap" id="slider_'+r.id+'"></div>':''}
       ${romResultHtml(r)}
+      ${(r.beforeImg||r.afterImg)?'<button class="rec-analysis-btn" data-pa-id="'+r.id+'" onclick="paOpenFromRecord('+r.id+')">🤖 AI姿勢解析</button>':''}
       ${(r.beforeImg||r.afterImg)?'<button class="rec-analysis-btn" onclick="openRomAnalysis('+r.id+')">📐 改善分析（角度チェック）</button>':''}
       ${r.note?'<div class="rec-note-disp">💬 '+r.note+'</div>':''}
     </div>
@@ -1981,38 +2036,14 @@ var cbBeforeDate = '';
 var cbAfterDate = '';
 
 function cbTakePhoto(type){
-  var input = document.createElement('input');
-  input.type = 'file';
-  input.accept = 'image/*';
-  input.setAttribute('capture', 'environment');
-  input.onchange = function(){
-    if(!input.files||!input.files[0]) return;
-    var reader = new FileReader();
-    reader.onload = function(e){
-      var dataUrl = e.target.result;
-      var today = new Date().toISOString().split('T')[0];
-      if(type==='before'){
-        cbBeforePhoto = dataUrl;
-        cbBeforeDate = today;
-        addBotMsg('',
-          '<div class="cb-bot-label">🎋 タケノビ君</div>'+
-          'いいね！📸 BEFORE写真を保存したよ！<br>'+
-          '<img class="cb-photo-preview" src="'+dataUrl+'"><br>'+
-          'この姿勢を覚えておくね。ストレッチが終わったらまた撮ろうね🎋'
-        );
-        setTimeout(function(){
-          addBotMsg('さて、今日はどこがつらい？🎋\nぼくがぴったりのストレッチ見つけてあげるね。\n下のボタンから選んでもいいし、自由に教えてね！');
-          renderQuickBtns(CB_QUICK_OPTIONS);
-        }, 800);
-      } else {
-        cbAfterPhoto = dataUrl;
-        cbAfterDate = today;
-        cbShowComparison();
-      }
-    };
-    reader.readAsDataURL(input.files[0]);
-  };
-  input.click();
+  // Use camera modal with self/other mode selection
+  camState.target = type === 'before' ? 'cb_before' : 'cb_after';
+  camState.mode = '';
+  document.getElementById('camTitle').textContent = '📷 ' + (type === 'before' ? 'BEFORE' : 'AFTER') + ' 撮影';
+  document.getElementById('camModeSelect').style.display = 'flex';
+  document.getElementById('camVideoWrap').style.display = 'none';
+  document.getElementById('camControls').style.display = 'none';
+  document.getElementById('camModalBg').classList.add('show');
 }
 
 function cbShowComparison(){
@@ -2023,10 +2054,12 @@ function cbShowComparison(){
     html += '<div class="cb-compare-item"><span class="cb-compare-label">BEFORE</span><br><img src="'+cbBeforePhoto+'"></div>';
     html += '<div class="cb-compare-item"><span class="cb-compare-label after">AFTER</span><br><img src="'+cbAfterPhoto+'"></div>';
     html += '</div>';
+    html += '<button class="cb-save-record-btn" onclick="paOpen(cbAfterPhoto,cbBeforePhoto)" style="background:linear-gradient(90deg,#1565c0,#1e88e5);margin-bottom:8px">🤖 AI姿勢解析</button>';
     html += '<button class="cb-save-record-btn" onclick="cbSaveToRecord()">💾 姿勢記録に保存する</button>';
   } else {
     html += 'AFTER写真を保存したよ！📸<br>';
     html += '<img class="cb-photo-preview" src="'+cbAfterPhoto+'">';
+    html += '<br><button class="cb-save-record-btn" onclick="paOpen(cbAfterPhoto)" style="background:linear-gradient(90deg,#1565c0,#1e88e5);margin-bottom:8px">🤖 AI姿勢解析</button>';
     html += '<br><button class="cb-save-record-btn" onclick="cbSaveToRecord()">💾 姿勢記録に保存する</button>';
   }
   addBotMsg('', html);
@@ -2604,14 +2637,48 @@ var camState = {
   target: 'before',
   stream: null,
   facingMode: 'environment',
-  timerSec: 0
+  timerSec: 0,
+  mode: '' // 'other' or 'self'
 };
 
 function openCamCapture(target){
   camState.target = target;
+  camState.mode = '';
   document.getElementById('camTitle').textContent = '📷 ' + (target === 'before' ? 'BEFORE' : 'AFTER') + ' 撮影';
+  document.getElementById('camModeSelect').style.display = 'flex';
+  document.getElementById('camVideoWrap').style.display = 'none';
+  document.getElementById('camControls').style.display = 'none';
   document.getElementById('camModalBg').classList.add('show');
+}
+
+function camSelectMode(mode){
+  camState.mode = mode;
+  if(mode === 'self'){
+    camState.timerSec = 3;
+    camState.facingMode = 'environment';
+  } else {
+    camState.timerSec = 0;
+  }
+  document.getElementById('camModeSelect').style.display = 'none';
+  document.getElementById('camVideoWrap').style.display = 'flex';
+  document.getElementById('camControls').style.display = 'flex';
+  if(mode === 'self'){
+    document.getElementById('camGuideText').textContent = 'タケラックに置いてシャッターを押してください（3秒後に撮影）';
+  } else {
+    document.getElementById('camGuideText').textContent = '全身が枠内に入るように立ってください';
+  }
   startCamStream();
+}
+
+function camBackToMode(){
+  if(camState.stream){
+    camState.stream.getTracks().forEach(function(t){ t.stop(); });
+    camState.stream = null;
+  }
+  document.getElementById('camVideo').srcObject = null;
+  document.getElementById('camModeSelect').style.display = 'flex';
+  document.getElementById('camVideoWrap').style.display = 'none';
+  document.getElementById('camControls').style.display = 'none';
 }
 
 function startCamStream(){
@@ -2621,29 +2688,50 @@ function startCamStream(){
   var constraints = {
     video: {
       facingMode: camState.facingMode,
-      width: { ideal: 1080 },
-      height: { ideal: 1440 }
+      width: { ideal: 640 },
+      height: { ideal: 854 }
     },
     audio: false
   };
   navigator.mediaDevices.getUserMedia(constraints)
     .then(function(stream){
       camState.stream = stream;
-      document.getElementById('camVideo').srcObject = stream;
+      var video = document.getElementById('camVideo');
+      video.srcObject = stream;
+      video.setAttribute('playsinline','');
+      video.play().catch(function(){});
     })
     .catch(function(err){
-      alert('カメラにアクセスできません: ' + err.message);
-      closeCamCapture();
+      // Fallback: try without resolution constraints
+      navigator.mediaDevices.getUserMedia({video: {facingMode: camState.facingMode}, audio: false})
+        .then(function(stream){
+          camState.stream = stream;
+          var video = document.getElementById('camVideo');
+          video.srcObject = stream;
+          video.setAttribute('playsinline','');
+          video.play().catch(function(){});
+        })
+        .catch(function(err2){
+          alert('カメラにアクセスできません: ' + err2.message);
+          closeCamCapture();
+        });
     });
 }
 
 function closeCamCapture(){
   document.getElementById('camModalBg').classList.remove('show');
+  var video = document.getElementById('camVideo');
+  if(video.srcObject){
+    video.srcObject.getTracks().forEach(function(t){ t.stop(); });
+    video.srcObject = null;
+  }
   if(camState.stream){
     camState.stream.getTracks().forEach(function(t){ t.stop(); });
     camState.stream = null;
   }
-  document.getElementById('camVideo').srcObject = null;
+  // Reset canvas to small size (don't set to 0 — breaks getContext on some mobile browsers)
+  var canvas = document.getElementById('camCanvas');
+  if(canvas){ canvas.width = 1; canvas.height = 1; }
 }
 
 function camSwitchFacing(){
@@ -2651,31 +2739,30 @@ function camSwitchFacing(){
   startCamStream();
 }
 
-function camSetTimer(){
-  var options = [0, 3, 5, 10];
-  var idx = options.indexOf(camState.timerSec);
-  camState.timerSec = options[(idx + 1) % options.length];
-  var btn = document.getElementById('camTimerBtn');
-  btn.textContent = camState.timerSec > 0 ? camState.timerSec + '秒' : '⏱️';
-}
-
 function camTakeWithTimer(){
-  if(camState.timerSec > 0){
+  if(camState.mode === 'self'){
+    // Self mode: always 3 second countdown
     var badge = document.getElementById('camTimer');
     badge.style.display = 'block';
-    var count = camState.timerSec;
+    var count = 3;
     badge.textContent = count;
+    // Disable shutter during countdown
+    document.getElementById('camShutterBtn').style.pointerEvents = 'none';
+    document.getElementById('camShutterBtn').style.opacity = '0.5';
     var iv = setInterval(function(){
       count--;
       if(count <= 0){
         clearInterval(iv);
         badge.style.display = 'none';
+        document.getElementById('camShutterBtn').style.pointerEvents = '';
+        document.getElementById('camShutterBtn').style.opacity = '';
         camCapture();
       } else {
         badge.textContent = count;
       }
     }, 1000);
   } else {
+    // Other person mode: immediate capture
     camCapture();
   }
 }
@@ -2683,40 +2770,92 @@ function camTakeWithTimer(){
 function camCapture(){
   var video = document.getElementById('camVideo');
   var canvas = document.getElementById('camCanvas');
-  canvas.width = video.videoWidth;
-  canvas.height = video.videoHeight;
+  // Resize to max 480px wide to reduce memory & localStorage usage
+  var maxW = 480;
+  var vw = video.videoWidth || 480;
+  var vh = video.videoHeight || 640;
+  var scale = vw > maxW ? maxW / vw : 1;
+  canvas.width = Math.round(vw * scale);
+  canvas.height = Math.round(vh * scale);
   var ctx = canvas.getContext('2d');
+  if(!ctx){
+    // Retry: recreate canvas element
+    var parent = canvas.parentNode;
+    var newCanvas = document.createElement('canvas');
+    newCanvas.id = 'camCanvas';
+    newCanvas.style.display = 'none';
+    parent.replaceChild(newCanvas, canvas);
+    canvas = newCanvas;
+    canvas.width = Math.round(vw * scale);
+    canvas.height = Math.round(vh * scale);
+    ctx = canvas.getContext('2d');
+  }
+  if(!ctx){ alert('カメラ描画エラー: ブラウザのタブを全て閉じてから再度お試しください。'); return; }
   // Mirror if using front camera
   if(camState.facingMode === 'user'){
     ctx.translate(canvas.width, 0);
     ctx.scale(-1, 1);
   }
-  ctx.drawImage(video, 0, 0);
+  ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
   ctx.setTransform(1,0,0,1,0,0);
   // Add timestamp watermark
   var now = new Date();
   var stamp = now.getFullYear() + '/' + String(now.getMonth()+1).padStart(2,'0') + '/' + String(now.getDate()).padStart(2,'0') + ' ' + String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0');
-  ctx.font = 'bold ' + Math.max(16, canvas.width * 0.03) + 'px sans-serif';
+  ctx.font = 'bold ' + Math.max(14, canvas.width * 0.035) + 'px sans-serif';
   ctx.fillStyle = 'rgba(255,255,255,0.7)';
   ctx.textAlign = 'right';
-  ctx.fillText(stamp, canvas.width - 12, canvas.height - 12);
+  ctx.fillText(stamp, canvas.width - 8, canvas.height - 8);
   ctx.fillStyle = 'rgba(0,0,0,0.4)';
-  ctx.fillText(stamp, canvas.width - 11, canvas.height - 11);
+  ctx.fillText(stamp, canvas.width - 7, canvas.height - 7);
 
-  var dataUrl = canvas.toDataURL('image/jpeg', 0.85);
-  // Set to record
-  if(camState.target === 'before'){
+  var dataUrl = canvas.toDataURL('image/jpeg', 0.45);
+  // Reset canvas to small size to free memory (1x1, not 0x0 to keep context valid)
+  canvas.width = 1; canvas.height = 1;
+  var today = new Date().toISOString().split('T')[0];
+  var todayDisplay = new Date().toLocaleDateString('ja-JP', {year:'numeric',month:'long',day:'numeric'});
+
+  if(camState.target === 'cb_before'){
+    // Chatbot BEFORE: save to record tab and show in chat
+    cbBeforePhoto = dataUrl;
+    cbBeforeDate = today;
+    beforeDataUrl = dataUrl;
+    // Auto-save to record tab
+    document.getElementById('beforePreview').src = dataUrl;
+    document.getElementById('beforePreview').style.display = 'block';
+    document.getElementById('beforeDate').value = today;
+    closeCamCapture();
+    addBotMsg('',
+      '<div class="cb-bot-label">🎋 タケノビ君</div>'+
+      'いいね！📸 BEFORE写真を保存したよ！<br>'+
+      '<span style="font-size:.75rem;color:#52796f">📅 '+todayDisplay+'</span><br>'+
+      '<img class="cb-photo-preview" src="'+dataUrl+'"><br>'+
+      '姿勢記録にも登録済みだよ。ストレッチが終わったらまた撮ろうね🎋'
+    );
+    setTimeout(function(){
+      addBotMsg('さて、今日はどこがつらい？🎋\nぼくがぴったりのストレッチ見つけてあげるね。\n下のボタンから選んでもいいし、自由に教えてね！');
+      renderQuickBtns(CB_QUICK_OPTIONS);
+    }, 800);
+  } else if(camState.target === 'cb_after'){
+    // Chatbot AFTER
+    cbAfterPhoto = dataUrl;
+    cbAfterDate = today;
+    closeCamCapture();
+    cbShowComparison();
+  } else if(camState.target === 'before'){
     beforeDataUrl = dataUrl;
     var img = document.getElementById('beforePreview');
     img.src = dataUrl; img.style.display = 'block';
+    document.getElementById('beforeDate').value = today;
+    closeCamCapture();
+    switchTab('record');
   } else {
     afterDataUrl = dataUrl;
     var img = document.getElementById('afterPreview');
     img.src = dataUrl; img.style.display = 'block';
+    document.getElementById('afterDate').value = today;
+    closeCamCapture();
+    switchTab('record');
   }
-  closeCamCapture();
-  // Auto switch to record tab
-  switchTab('record');
 }
 
 /* ========== ENHANCED RECORD: SLIDER ========== */
@@ -2738,6 +2877,250 @@ function initSliderCompare(wrapperId,beforeSrc,afterSrc){
   w.addEventListener('touchstart',function(e){dragging=true;move(e.touches[0].clientX);e.preventDefault()});
   w.addEventListener('touchmove',function(e){if(dragging)move(e.touches[0].clientX)});
   w.addEventListener('touchend',function(){dragging=false});
+}
+
+/* ========== AI POSTURE ANALYSIS ========== */
+var paState = {
+  afterImg: '', beforeImg: '', points: [], _img: null,
+  beforePoints: null // saved from localStorage if exists
+};
+
+var PA_LANDMARKS = [
+  {id:'head',    label:'頭のてっぺん', short:'頭'},
+  {id:'neck',    label:'首の付け根',   short:'首'},
+  {id:'shoulderL',label:'左肩',       short:'左肩'},
+  {id:'shoulderR',label:'右肩',       short:'右肩'},
+  {id:'hipL',    label:'左腰（骨盤）', short:'左腰'},
+  {id:'hipR',    label:'右腰（骨盤）', short:'右腰'},
+  {id:'kneeL',   label:'左ひざ',      short:'左膝'},
+  {id:'kneeR',   label:'右ひざ',      short:'右膝'}
+];
+
+function paOpen(afterSrc, beforeSrc){
+  paState.afterImg = afterSrc || '';
+  paState.beforeImg = beforeSrc || '';
+  paState.points = [];
+  document.getElementById('paResultArea').innerHTML = '';
+  document.getElementById('paAnalyzeBtn').disabled = true;
+  document.getElementById('paScanLine').style.display = 'none';
+  var img = document.getElementById('paImg');
+  img.src = paState.afterImg;
+  img.onload = function(){
+    var canvas = document.getElementById('paCanvas');
+    canvas.width = img.naturalWidth;
+    canvas.height = img.naturalHeight;
+    paRenderLandmarks();
+    // Setup touch/click
+    canvas.onclick = function(e){ paOnTap(e); };
+    canvas.ontouchstart = function(e){
+      e.preventDefault();
+      paOnTap(e.touches[0]);
+    };
+  };
+  document.getElementById('paModalBg').classList.add('show');
+}
+
+function paClose(){
+  document.getElementById('paModalBg').classList.remove('show');
+}
+
+function paReset(){
+  paState.points = [];
+  document.getElementById('paResultArea').innerHTML = '';
+  document.getElementById('paAnalyzeBtn').disabled = true;
+  document.getElementById('paScanLine').style.display = 'none';
+  paRedraw();
+  paRenderLandmarks();
+}
+
+function paRenderLandmarks(){
+  var el = document.getElementById('paLandmarks');
+  el.innerHTML = PA_LANDMARKS.map(function(lm, i){
+    var cls = i < paState.points.length ? 'done' : (i === paState.points.length ? 'current' : '');
+    return '<span class="pa-lm-tag '+cls+'">'+lm.short+'</span>';
+  }).join('');
+  document.getElementById('paInstructions').innerHTML =
+    paState.points.length < PA_LANDMARKS.length
+      ? '<b>'+PA_LANDMARKS[paState.points.length].label+'</b>をタップしてください（'+(paState.points.length+1)+'/'+PA_LANDMARKS.length+'）'
+      : '<b>全ポイント完了！</b>「🤖 解析する」を押してください';
+}
+
+function paOpenFromRecord(recordId){
+  var records = loadRecords();
+  var rec = records.find(function(r){ return r.id == recordId; });
+  if(!rec){ alert('記録が見つかりません'); return; }
+  paOpen(rec.afterImg || rec.beforeImg, rec.beforeImg || '');
+}
+
+function paOnTap(e){
+  if(paState.points.length >= PA_LANDMARKS.length) return;
+  var canvas = document.getElementById('paCanvas');
+  var rect = canvas.getBoundingClientRect();
+  var sx = canvas.width / rect.width;
+  var sy = canvas.height / rect.height;
+  var x = (e.clientX - rect.left) * sx;
+  var y = (e.clientY - rect.top) * sy;
+  paState.points.push({x:x, y:y, id:PA_LANDMARKS[paState.points.length].id});
+  paRedraw();
+  paRenderLandmarks();
+  if(paState.points.length >= PA_LANDMARKS.length){
+    document.getElementById('paAnalyzeBtn').disabled = false;
+  }
+}
+
+function paRedraw(){
+  var canvas = document.getElementById('paCanvas');
+  var ctx = canvas.getContext('2d');
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  var pts = paState.points;
+  var r = Math.max(6, canvas.width * 0.012);
+  var colors = ['#e74c3c','#e67e22','#f1c40f','#f1c40f','#2ecc71','#2ecc71','#3498db','#3498db'];
+  // Draw skeleton lines
+  var connections = [[0,1],[1,2],[1,3],[2,4],[3,5],[4,6],[5,7]];
+  ctx.lineWidth = Math.max(2, canvas.width * 0.004);
+  connections.forEach(function(c){
+    if(pts[c[0]] && pts[c[1]]){
+      ctx.beginPath();
+      ctx.moveTo(pts[c[0]].x, pts[c[0]].y);
+      ctx.lineTo(pts[c[1]].x, pts[c[1]].y);
+      ctx.strokeStyle = 'rgba(82,183,136,0.7)';
+      ctx.stroke();
+    }
+  });
+  // Draw center line (vertical reference)
+  if(pts.length >= 2){
+    ctx.beginPath();
+    ctx.setLineDash([8,6]);
+    var cx = (pts[0].x + pts[1].x) / 2;
+    ctx.moveTo(cx, 0);
+    ctx.lineTo(cx, canvas.height);
+    ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+    ctx.setLineDash([]);
+  }
+  // Draw points
+  var fs = Math.max(10, canvas.width * 0.02);
+  pts.forEach(function(p,i){
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, r, 0, Math.PI*2);
+    ctx.fillStyle = colors[i];
+    ctx.fill();
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = Math.max(2, canvas.width * 0.003);
+    ctx.stroke();
+    ctx.font = 'bold '+fs+'px sans-serif';
+    ctx.fillStyle = '#fff';
+    ctx.textAlign = 'center';
+    ctx.fillText(PA_LANDMARKS[i].short, p.x, p.y - r - 4);
+  });
+}
+
+function paAnalyze(){
+  var pts = paState.points;
+  if(pts.length < PA_LANDMARKS.length) return;
+  // Show scanning animation
+  document.getElementById('paScanLine').style.display = 'block';
+  document.getElementById('paAnalyzeBtn').disabled = true;
+  document.getElementById('paAnalyzeBtn').textContent = '🔄 解析中...';
+
+  setTimeout(function(){
+    document.getElementById('paScanLine').style.display = 'none';
+    document.getElementById('paAnalyzeBtn').textContent = '🤖 解析する';
+    document.getElementById('paAnalyzeBtn').disabled = false;
+
+    // Calculate metrics
+    var head = pts[0], neck = pts[1];
+    var sL = pts[2], sR = pts[3];
+    var hL = pts[4], hR = pts[5];
+    var kL = pts[6], kR = pts[7];
+
+    // 1. Head tilt (degrees from vertical)
+    var headTilt = Math.abs(Math.atan2(head.x - neck.x, neck.y - head.y) * 180 / Math.PI);
+
+    // 2. Shoulder balance (height difference as % of shoulder width)
+    var shoulderW = Math.abs(sR.x - sL.x);
+    var shoulderTilt = Math.abs(sL.y - sR.y) / (shoulderW || 1) * 100;
+
+    // 3. Hip balance
+    var hipW = Math.abs(hR.x - hL.x);
+    var hipTilt = Math.abs(hL.y - hR.y) / (hipW || 1) * 100;
+
+    // 4. Spine alignment (neck to hip center offset)
+    var hipCx = (hL.x + hR.x) / 2;
+    var spineLean = Math.abs(neck.x - hipCx) / (shoulderW || 1) * 100;
+
+    // 5. Knee alignment
+    var kneeDiff = Math.abs(kL.y - kR.y);
+    var kneeBalance = kneeDiff / (hipW || 1) * 100;
+
+    // Score calculation (100 = perfect)
+    var headScore = Math.max(0, 100 - headTilt * 5);
+    var shoulderScore = Math.max(0, 100 - shoulderTilt * 3);
+    var hipScore = Math.max(0, 100 - hipTilt * 3);
+    var spineScore = Math.max(0, 100 - spineLean * 3);
+    var kneeScore = Math.max(0, 100 - kneeBalance * 3);
+    var totalScore = Math.round((headScore + shoulderScore + hipScore + spineScore + kneeScore) / 5);
+
+    function scoreClass(s){ return s >= 80 ? '' : s >= 60 ? 'warn' : 'bad'; }
+    function scoreEmoji(s){ return s >= 80 ? '✅' : s >= 60 ? '⚠️' : '❌'; }
+
+    // Generate advice
+    var advice = [];
+    if(headScore < 80) advice.push('頭が傾いています。首のストレッチ（カタミミタケ）がおすすめです');
+    if(shoulderScore < 80) advice.push('肩の左右バランスに差があります。ウエセタケで肩甲骨をほぐしましょう');
+    if(spineScore < 80) advice.push('体幹が左右に傾いています。ネジリダケで体幹を整えましょう');
+    if(hipScore < 80) advice.push('骨盤の高さに左右差があります。腰まわりのストレッチをしましょう');
+    if(advice.length === 0) advice.push('とても良い姿勢です！この状態をキープしましょう');
+
+    // SVG ring
+    var ringColor = totalScore >= 80 ? '#52b788' : totalScore >= 60 ? '#f39c12' : '#e74c3c';
+    var circumference = 2 * Math.PI * 42;
+    var dashOffset = circumference * (1 - totalScore / 100);
+
+    var html = '<div class="pa-result">';
+    html += '<h4>🤖 AI姿勢解析レポート</h4>';
+    html += '<div class="pa-score-ring"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="6"/><circle cx="50" cy="50" r="42" fill="none" stroke="'+ringColor+'" stroke-width="6" stroke-linecap="round" stroke-dasharray="'+circumference+'" stroke-dashoffset="'+dashOffset+'" transform="rotate(-90 50 50)"/></svg><div class="pa-score-num">'+totalScore+'</div></div>';
+    html += '<div class="pa-score-label">姿勢スコア（100点満点）</div>';
+    html += '<div class="pa-metrics">';
+    html += '<div class="pa-metric"><div class="pa-metric-name">頭の傾き</div><div class="pa-metric-val '+scoreClass(headScore)+'">'+scoreEmoji(headScore)+' '+Math.round(headScore)+'点</div></div>';
+    html += '<div class="pa-metric"><div class="pa-metric-name">肩バランス</div><div class="pa-metric-val '+scoreClass(shoulderScore)+'">'+scoreEmoji(shoulderScore)+' '+Math.round(shoulderScore)+'点</div></div>';
+    html += '<div class="pa-metric"><div class="pa-metric-name">体幹アライメント</div><div class="pa-metric-val '+scoreClass(spineScore)+'">'+scoreEmoji(spineScore)+' '+Math.round(spineScore)+'点</div></div>';
+    html += '<div class="pa-metric"><div class="pa-metric-name">骨盤バランス</div><div class="pa-metric-val '+scoreClass(hipScore)+'">'+scoreEmoji(hipScore)+' '+Math.round(hipScore)+'点</div></div>';
+    html += '</div>';
+    html += '<div class="pa-advice"><b>💡 アドバイス</b><br>'+advice.join('<br>')+'</div>';
+
+    // Save score for comparison
+    var analysisData = {
+      date: new Date().toLocaleDateString('ja-JP'),
+      score: totalScore,
+      headScore: Math.round(headScore),
+      shoulderScore: Math.round(shoulderScore),
+      spineScore: Math.round(spineScore),
+      hipScore: Math.round(hipScore)
+    };
+    var history = JSON.parse(localStorage.getItem('paHistory') || '[]');
+    history.unshift(analysisData);
+    if(history.length > 20) history = history.slice(0, 20);
+    localStorage.setItem('paHistory', JSON.stringify(history));
+
+    // Show history comparison if available
+    if(history.length > 1){
+      var prev = history[1];
+      var diff = totalScore - prev.score;
+      html += '<div class="pa-compare"><h5>📊 前回比較（'+prev.date+'）</h5>';
+      html += '<div class="pa-metrics">';
+      html += '<div class="pa-metric"><div class="pa-metric-name">前回スコア</div><div class="pa-metric-val">'+prev.score+'点</div></div>';
+      html += '<div class="pa-metric"><div class="pa-metric-name">変化</div><div class="pa-metric-val '+(diff>0?'':diff<0?'bad':'')+'">'+
+        (diff>0?'🎉 +'+diff+'点':diff<0?'📉 '+diff+'点':'→ 変化なし')+'</div></div>';
+      html += '</div></div>';
+    }
+
+    html += '</div>';
+    document.getElementById('paResultArea').innerHTML = html;
+    // Scroll to result
+    document.getElementById('paResultArea').scrollIntoView({behavior:'smooth'});
+  }, 2000);
 }
 
 /* ========== ROM ANALYSIS SYSTEM ========== */
