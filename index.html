@@ -626,6 +626,7 @@ footer strong{color:var(--accent)}
 </div>
 <script>
 (function(){
+  document.getElementById('pinGate').classList.add('hidden');return;/*GitHub Pages版はアクセスコード不要*/
   if(localStorage.getItem('ts_auth')==='ok'){document.getElementById('pinGate').classList.add('hidden');return;}
   var inputs=document.querySelectorAll('#pinInputs input');
   inputs.forEach(function(inp,i){
