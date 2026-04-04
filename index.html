@@ -300,8 +300,9 @@ footer strong{color:var(--accent)}
 .cb-save-record-btn{display:block;width:100%;padding:12px;background:linear-gradient(135deg,var(--accent),var(--accent-soft));border:none;border-radius:var(--radius-sm);color:#fff;font-size:.82rem;font-weight:700;cursor:pointer;margin-top:12px;letter-spacing:.03em}
 .cb-save-record-btn:active{opacity:.85}
 
-.cb-avatar-wrap{width:180px;height:180px;border-radius:50%;overflow:hidden;border:3px solid #8cc85a;filter:drop-shadow(0 4px 20px rgba(140,200,90,.25));margin:0 auto;flex-shrink:0}
-.cb-avatar-lg{width:100%;height:100%;object-fit:cover;transform:scale(2.0);transform-origin:center 50%}
+.cb-avatar-wrap{width:120px;height:120px;border-radius:50%;overflow:hidden;border:3px solid #8cc85a;filter:drop-shadow(0 4px 20px rgba(140,200,90,.25));margin:0 auto;flex-shrink:0}
+.cb-avatar-lg{width:100%;height:100%;object-fit:cover;transform:scale(1.5);transform-origin:center 50%}
+@media(max-width:600px){.cb-avatar-wrap{width:80px;height:80px}.cb-avatar-lg{transform:scale(1.2)}}
 .cb-bot-avatar-wrap{width:44px;height:44px;border-radius:50%;overflow:hidden;border:2px solid var(--accent);flex-shrink:0;display:inline-block;vertical-align:middle;margin-right:6px}
 .cb-bot-avatar{width:100%;height:100%;object-fit:cover;transform:scale(2.0);transform-origin:center 50%;display:block}
 
@@ -1335,6 +1336,7 @@ function switchTab(tab){
   if(tab==='feedback') resetFeedbackForm();
   if(tab==='goals'){updateGoalSubs();renderGoals();}
   if(tab==='activity') renderActivity();
+  if(tab==='videos' && !window._videosRendered){window._videosRendered=true;render();}
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
@@ -3625,8 +3627,8 @@ function renderActHistory(stats){
 }
 
 // 遅延初期化（スマホでの固まりを防止）
-setTimeout(function(){ render(); }, 100);
-setTimeout(function(){ initChatbot(); }, 500);
+// render()は動画タブに切り替えた時に実行（switchTab内）
+setTimeout(function(){ initChatbot(); }, 300);
 
 // ===== ディープリンク対応 =====
 // URL末尾に #v53 のようなハッシュで特定動画を自動表示
