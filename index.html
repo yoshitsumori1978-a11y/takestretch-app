@@ -2707,32 +2707,36 @@ var camState = {
 };
 
 function openCamCapture(target){
-  camState.target = target;
-  camState.mode = '';
-  document.getElementById('camTitle').textContent = '📷 ' + (target === 'before' ? 'BEFORE' : 'AFTER') + ' 撮影';
-  document.getElementById('camModeSelect').style.display = 'flex';
-  document.getElementById('camVideoWrap').style.display = 'none';
-  document.getElementById('camControls').style.display = 'none';
-  document.getElementById('camModalBg').classList.add('show');
+  try{
+    camState.target = target;
+    camState.mode = '';
+    document.getElementById('camTitle').textContent = '📷 ' + (target === 'before' ? 'BEFORE' : 'AFTER') + ' 撮影';
+    document.getElementById('camModeSelect').style.display = 'flex';
+    document.getElementById('camVideoWrap').style.display = 'none';
+    document.getElementById('camControls').style.display = 'none';
+    document.getElementById('camModalBg').classList.add('show');
+  }catch(e){alert('カメラ起動エラー: '+e.message);}
 }
 
 function camSelectMode(mode){
-  camState.mode = mode;
-  if(mode === 'self'){
-    camState.timerSec = 10;
-    camState.facingMode = 'environment';
-  } else {
-    camState.timerSec = 0;
-  }
-  document.getElementById('camModeSelect').style.display = 'none';
-  document.getElementById('camVideoWrap').style.display = 'flex';
-  document.getElementById('camControls').style.display = 'flex';
-  if(mode === 'self'){
-    document.getElementById('camGuideText').textContent = 'タケラックに置いてシャッターを押してください（10秒後に撮影）';
-  } else {
-    document.getElementById('camGuideText').textContent = '全身が枠内に入るように立ってください';
-  }
-  startCamStream();
+  try{
+    camState.mode = mode;
+    if(mode === 'self'){
+      camState.timerSec = 10;
+      camState.facingMode = 'environment';
+    } else {
+      camState.timerSec = 0;
+    }
+    document.getElementById('camModeSelect').style.display = 'none';
+    document.getElementById('camVideoWrap').style.display = 'flex';
+    document.getElementById('camControls').style.display = 'flex';
+    if(mode === 'self'){
+      document.getElementById('camGuideText').textContent = 'タケラックに置いてシャッターを押してください（10秒後に撮影）';
+    } else {
+      document.getElementById('camGuideText').textContent = '全身が枠内に入るように立ってください';
+    }
+    startCamStream();
+  }catch(e){alert('モード選択エラー: '+e.message);}
 }
 
 function camBackToMode(){
